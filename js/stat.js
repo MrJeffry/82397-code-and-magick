@@ -33,18 +33,5 @@ window.renderStatistics = function (ctx, names, times) {
 
   }
 
-
-  // ctx.fillStyle = 'green';
-  // ctx.fillRect(160 + 80, 80, 40, 150);
-  // ctx.fillText(names[1], 160 + 80, 250);
-
-  // ctx.fillStyle = '#000';
-  // ctx.fillRect(240 + 80, 80, 40, 150);
-  // ctx.fillText(names[2], 240 + 80, 250);
-
-  // ctx.fillStyle = 'blue';
-  // ctx.fillRect(320 + 80, 80, 40, 150);
-  // ctx.fillText(names[3], 320 + 80, 250);
-
   renderCloudText(ctx, 120, 40);
 };
