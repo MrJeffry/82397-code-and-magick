@@ -11,9 +11,7 @@ var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template');
 var similarWizardItem = similarWizardTemplate.content.querySelector('.setup-similar-item');
 
-
 userDialog.classList.remove('hidden');
-
 
 var randomArrayGeneration = function (array) {
   return array[Math.ceil(Math.random() * array.length - 1)];
