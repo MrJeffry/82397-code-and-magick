@@ -2,10 +2,10 @@
 
 var GENERATED_CHARACTERS = 4;
 
-var wizardNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-var wizardSurnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго'];
-var wizardCoatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var wizardEyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго'];
+var WIZARD_COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var userDialog = document.querySelector('.setup');
 var setupSimilar = userDialog.querySelector('.setup-similar');
@@ -21,9 +21,9 @@ var generateWizards = function (quantityWizard) {
   var wizards = [];
   for (var i = 0; i < quantityWizard; i++) {
     wizards[i] = {
-      name: randomArrayGeneration(wizardNames) + ' ' + randomArrayGeneration(wizardSurnames),
-      coatColor: randomArrayGeneration(wizardCoatColors),
-      eyesColor: randomArrayGeneration(wizardEyesColors)
+      name: randomArrayGeneration(WIZARD_NAMES) + ' ' + randomArrayGeneration(WIZARD_SURNAMES),
+      coatColor: randomArrayGeneration(WIZARD_COAT_COLORS),
+      eyesColor: randomArrayGeneration(WIZARD_EYES_COLORS)
     };
   }
   return wizards;
