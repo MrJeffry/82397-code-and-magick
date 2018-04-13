@@ -1,6 +1,8 @@
 'use strict';
 
 var GENERATED_CHARACTERS = 4;
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго'];
@@ -9,9 +11,41 @@ var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var userDialog = document.querySelector('.setup');
 var setupSimilar = userDialog.querySelector('.setup-similar');
+var closeDialogButton = userDialog.querySelector('.setup-close');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
+var avatarButton = document.querySelector('.setup-open-icon');
 
-userDialog.classList.remove('hidden');
+var avatarIconClickHandler = function() {
+  userDialog.classList.remove('hidden');
+  document.addEventListener('keydown', closeDialogEscPressHandler);
+  closeDialogButton.addEventListener('keydown', closeDialogEnterPressHandler);
+  avatarButton.removeEventListener('keydown', avatarIconEnterPressHandler);
+}
+
+var dialogCloseButtonClickHendler = function() {
+  userDialog.classList.add('hidden');
+  document.removeEventListener('keydown', closeDialogEscPressHandler);
+  closeDialogButton.removeEventListener('keydown', closeDialogEnterPressHandler);
+  avatarButton.addEventListener('keydown', avatarIconEnterPressHandler);
+}
+
+var closeDialogEscPressHandler = function (e) {
+  if (e.keyCode === ESC_KEYCODE) {
+    dialogCloseButtonClickHendler();
+  }
+}
+
+var closeDialogEnterPressHandler = function (e) {
+  if (e.keyCode === ENTER_KEYCODE) {
+    dialogCloseButtonClickHendler();
+  }
+}
+
+var avatarIconEnterPressHandler = function (e) {
+  if (e.keyCode === ENTER_KEYCODE) {
+    avatarIconClickHandler();
+  }
+}
 
 var randomArrayGeneration = function (array) {
   return array[Math.ceil(Math.random() * array.length - 1)];
@@ -54,3 +88,7 @@ var generateFragment = function (wizardsArray) {
 generateFragment(wizards);
 
 setupSimilar.classList.remove('hidden');
+
+avatarButton.addEventListener('click', avatarIconClickHandler);
+closeDialogButton.addEventListener('click', dialogCloseButtonClickHendler);
+avatarButton.addEventListener('keydown', avatarIconEnterPressHandler);
