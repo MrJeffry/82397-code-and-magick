@@ -16,21 +16,22 @@ var closeDialogButton = userDialog.querySelector('.setup-close');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var avatarButton = document.querySelector('.setup-open-icon');
 var inputName = document.querySelector('.setup-user-name');
-var wizardEyes = document.querySelector('.wizard-eyes');
-var wizardFireball = document.querySelector('.setup-fireball-wrap');
-
-// Временное решение! Удалить!
-// userDialog.classList.remove('hidden');
-//
+var playerSetup = document.querySelector('.setup-player');
+var wizardEyes = playerSetup.querySelector('.wizard-eyes');
+var wizardFireball = playerSetup.querySelector('.setup-fireball-wrap');
 
 var wizardEyesColorClickHandler = function () {
+  var hiddenInputWizardEyesColor = playerSetup.querySelector('[name="eyes-color"]');
   var wizardEyesColor = generateWizardEyesColor();
   wizardEyes.style.fill = wizardEyesColor;
+  hiddenInputWizardEyesColor.value = wizardEyesColor;
 };
 
 var wizardFireballColorClickHandler = function () {
+  var hiddenInputWizardCoatColor = playerSetup.querySelector('[name="fireball-color"]');
   var wizardFireballColor = generateWizardFireballColor();
   wizardFireball.style.background = wizardFireballColor;
+  hiddenInputWizardCoatColor.value = wizardFireballColor;
 };
 
 var avatarIconClickHandler = function () {
@@ -54,20 +55,20 @@ var dialogCloseButtonClickHendler = function () {
   wizardFireball.removeEventListener('click', wizardFireballColorClickHandler);
 };
 
-var closeDialogEscPressHandler = function (e) {
-  if (e.keyCode === ESC_KEYCODE) {
+var closeDialogEscPressHandler = function (etv) {
+  if (etv.keyCode === ESC_KEYCODE) {
     dialogCloseButtonClickHendler();
   }
 };
 
-var closeDialogEnterPressHandler = function (e) {
-  if (e.keyCode === ENTER_KEYCODE) {
+var closeDialogEnterPressHandler = function (etv) {
+  if (etv.keyCode === ENTER_KEYCODE) {
     dialogCloseButtonClickHendler();
   }
 };
 
-var avatarIconEnterPressHandler = function (e) {
-  if (e.keyCode === ENTER_KEYCODE) {
+var avatarIconEnterPressHandler = function (etv) {
+  if (etv.keyCode === ENTER_KEYCODE) {
     avatarIconClickHandler();
   }
 };
