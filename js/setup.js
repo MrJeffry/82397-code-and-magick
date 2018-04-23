@@ -1,8 +1,11 @@
 'use strict';
 
 var GENERATED_CHARACTERS = 4;
-var ESC_KEYCODE = 27;
-var ENTER_KEYCODE = 13;
+
+var KEYCODES = {
+  esc: 27,
+  enter: 13
+};
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго'];
@@ -11,12 +14,12 @@ var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var WIZARD_FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 var userDialog = document.querySelector('.setup');
+var avatarButton = document.querySelector('.setup-open-icon');
 var setupSimilar = userDialog.querySelector('.setup-similar');
 var closeDialogButton = userDialog.querySelector('.setup-close');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
-var avatarButton = document.querySelector('.setup-open-icon');
-var inputName = document.querySelector('.setup-user-name');
-var playerSetup = document.querySelector('.setup-player');
+var inputName = userDialog.querySelector('.setup-user-name');
+var playerSetup = userDialog.querySelector('.setup-player');
 var wizardEyes = playerSetup.querySelector('.wizard-eyes');
 var wizardFireball = playerSetup.querySelector('.setup-fireball-wrap');
 
@@ -55,20 +58,20 @@ var dialogCloseButtonClickHendler = function () {
   wizardFireball.removeEventListener('click', wizardFireballColorClickHandler);
 };
 
-var closeDialogEscPressHandler = function (etv) {
-  if (etv.keyCode === ESC_KEYCODE) {
+var closeDialogEscPressHandler = function (evt) {
+  if (evt.keyCode === KEYCODES.esc) {
     dialogCloseButtonClickHendler();
   }
 };
 
-var closeDialogEnterPressHandler = function (etv) {
-  if (etv.keyCode === ENTER_KEYCODE) {
+var closeDialogEnterPressHandler = function (evt) {
+  if (evt.keyCode === KEYCODES.enter) {
     dialogCloseButtonClickHendler();
   }
 };
 
-var avatarIconEnterPressHandler = function (etv) {
-  if (etv.keyCode === ENTER_KEYCODE) {
+var avatarIconEnterPressHandler = function (evt) {
+  if (evt.keyCode === KEYCODES.enter) {
     avatarIconClickHandler();
   }
 };
